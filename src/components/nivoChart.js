@@ -6,10 +6,7 @@ import sbp_sbp from '../data.json';
 
 
 function NivoResponsiveLine(props) {
-    const api_info = props.api_info
-    console.log('NivoResponsiveLine1:', api_info)
-    console.log('NivoResponsiveLine2:', sbp_sbp)
-
+    const api_info = props.api_info;
     var defult_input = [
         {
             "id": "sbp",
@@ -68,14 +65,11 @@ function NivoResponsiveLine(props) {
 
         setNewData(chart_input)
         setXTickValues(xTick)
-        console.log(`newData: ${newData}`)
-
     }, []);
 
     return (
         <>
             <Chart newData={newData} xTickValues={xTickValues}>
-
             </Chart>
         </>
     );
@@ -83,7 +77,7 @@ function NivoResponsiveLine(props) {
 
 function NivoChart(props) {
     const api_info = props.data;
-    console.log('NivoChart:', props)
+    const [apiInfo, setApiInfo] = useState(api_info);
     return (
         <div className="container-fluid" >
             <div className="row border-bottom">
@@ -102,7 +96,7 @@ function NivoChart(props) {
                     <div className="row">
                         <div className="col col-10">
                             <div className="item">
-                                <NivoResponsiveLine api_info={api_info} />
+                                <NivoResponsiveLine api_info={apiInfo} />
                             </div>
                         </div>
                     </div>
