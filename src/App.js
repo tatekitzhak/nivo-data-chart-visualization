@@ -66,7 +66,7 @@ function App() {
                 </header>
                 <h1>Chart</h1>
                 {console.log('fetchData:',fetchData)}
-                {Object.keys(fetchData).length && <NivoChart data={fetchData}></NivoChart>}
+                {Object.keys(fetchData).length ? <NivoChart data={fetchData}></NivoChart> : <h1>Chart loading...</h1> }
 
             </div>
         </>
