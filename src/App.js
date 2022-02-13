@@ -3,7 +3,24 @@ import NivoChart from './components/nivoChart';
 
 function App() {
     const [newData, setNewData] = useState('');
-    const [fetchData, setFetchData] = useState([]);
+    const [fetchData, setFetchData] = useState({});
+
+    async function fetch_biobeat_api(url) {
+        try {
+            let response = await fetch(url);
+            if (!response.ok) {
+                console.log(Error(`${response.status} ${response.statusText}`));
+            }
+            console.log('response::', response)
+            let result = await response.json();
+
+            return result;
+
+        } catch (error) {
+            // Errors param
+            console.log(`Fetch error:${error} status:${error.status} error.error:${error.error} headers:${error.headers}`);
+        }
+    }
 
     useEffect(() => {
         /**
@@ -29,30 +46,12 @@ function App() {
             referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
             body: JSON.stringify(body_data) // body data type must match "Content-Type" header
         }
-        async function fetch_biobeat_api(url) {
-
-            try {
-                let response = await fetch(url);
-                if (!response.ok) {
-                    console.log(Error(`${response.status} ${response.statusText}`));
-                }
-                console.log('response:', response)
-                let result = await response.json();
-
-                return result;
-
-            } catch (error) {
-                // Errors param
-                console.log(`Fetch error:${error} status:${error.status} error.error:${error.error} headers:${error.headers}`);
-
-            }
-
-        }
 
         fetch_biobeat_api('get-demo-data')
             .then(function (res) {
                 setFetchData(res)
                 console.log(`Fetch result:: ${res}`)
+                console.log('res:',res)
             }).catch(error => {
                 console.log(`Error fetch_biobeat_api::${error}`)
             })
@@ -66,7 +65,9 @@ function App() {
                     <div className="App-header-text">Biobit Nivo data chart visualization</div>
                 </header>
                 <h1>Chart</h1>
-                <NivoChart data={fetchData}></NivoChart>
+                {console.log('fetchData:',fetchData)}
+                {Object.keys(fetchData).length && <NivoChart data={fetchData}></NivoChart>}
+
             </div>
         </>
     );

@@ -7,6 +7,8 @@ import sbp_sbp from '../data.json';
 
 function NivoResponsiveLine(props) {
     const api_info = props.api_info
+    console.log('NivoResponsiveLine1:', api_info)
+    console.log('NivoResponsiveLine2:', sbp_sbp)
 
     var defult_input = [
         {
@@ -27,7 +29,7 @@ function NivoResponsiveLine(props) {
 
     const [newData, setNewData] = useState(defult_input);
     const [xTickValues, setXTickValues] = useState([]);
-
+    const [apiData, setApiData] = useState(api_info);
     useEffect(() => {
         var xTick = []
         var chart_input = [
@@ -41,7 +43,7 @@ function NivoResponsiveLine(props) {
                 "data": []
             }];
 
-        sbp_sbp.sbp.data.forEach(function (a) {
+        apiData.sbp.data.forEach(function (a) {
             var time_parts = a.label.match(/.{2}/g)
 
             if (time_parts[4] % 5 == 0) {
@@ -54,7 +56,7 @@ function NivoResponsiveLine(props) {
 
         })
 
-        sbp_sbp.dbp.data.forEach(function (a) {
+        apiData.dbp.data.forEach(function (a) {
             var time_parts = a.label.match(/.{2}/g)
             // if (time_parts[4] % 5 == 0) {
             chart_input[1].data.push({
@@ -80,8 +82,8 @@ function NivoResponsiveLine(props) {
 }
 
 function NivoChart(props) {
-    const api_info = JSON.stringify(props)
-    // console.log(`NivoChart: ${api_info}`)
+    const api_info = props.data;
+    console.log('NivoChart:', props)
     return (
         <div className="container-fluid" >
             <div className="row border-bottom">
