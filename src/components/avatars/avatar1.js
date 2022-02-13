@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-function Avater1() {
+
+function Avaters() {
     return (
         <>
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" className="bi bi-person-hearts" viewBox="0 0 16 16">
@@ -8,6 +9,27 @@ function Avater1() {
         </>
     )
 
+}
+function Avater1() {
+    return(
+        <>
+            <div className="col-2">
+
+                <div className="row">
+                    <div className="col">
+                        <Avaters/>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col"><Avaters /></div>
+                </div>
+                <div className="row">
+                    <div className="col"><Avaters /></div>
+                </div>
+            </div>
+        </>
+    )
+    
 }
 
 export default Avater1;
