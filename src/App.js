@@ -1,7 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState} from 'react';
 import NivoChart from './components/nivoChart';
 
 function App() {
+    const [newData, setNewData] = useState('');
+    const [fetchData, setFetchData] = useState([]);
 
     useEffect(() => {
         /**
@@ -49,6 +51,7 @@ function App() {
 
         fetch_biobeat_api('get-demo-data')
             .then(function (res) {
+                setFetchData(res)
                 console.log(`Fetch result:: ${res}`)
             }).catch(error => {
                 console.log(`Error fetch_biobeat_api::${error}`)
@@ -63,7 +66,7 @@ function App() {
                     <div className="App-header-text">Biobit Nivo data chart visualization</div>
                 </header>
                 <h1>Chart</h1>
-                <NivoChart></NivoChart>
+                <NivoChart data={fetchData}></NivoChart>
             </div>
         </>
     );
