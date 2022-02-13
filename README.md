@@ -1,5 +1,16 @@
-This is an example project for setting up react to handle cross origin resource sharing (CORS) while in development. The project accesses the latest XKCD comic from the endpoint https://xkcd.com/info.0.json.
-            
-This request would normally be blocked by the browser, however using the proxy setting within the package.json tells react to setup a proxy server that allows us to access resources on different origins. Note, this only works in development (using npm start) more details can be found within the react docs.
-                   
-https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#proxying-api-requests-in-development
+
+
+# Nivo Chart Library with React JS
+    A chart of graphical representation for data visualization.
+## Description
+    A chart of graphical representation for data visualization.
+###### Dependencies
+    Describe any prerequisites, libraries, OS version, etc., needed before installing program.
+    ex. Windows 10
+###### Installing
+    Download A program
+    Any modifications needed to be made to files/folders
+    npm install
+    npm run build
+    Would you like to run the app on another port instead? (Y/n) => Y
+    nmp start 
