@@ -1,9 +1,9 @@
 
 
-# nivo-data-chart-visualization
-abc
+# Nivo Chart Library with React JS
+    A chart of graphical representation for data visualization.
 ## Description
-abc
+    A chart of graphical representation for data visualization.
 ###### Dependencies
     Describe any prerequisites, libraries, OS version, etc., needed before installing program.
     ex. Windows 10
