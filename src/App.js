@@ -4,7 +4,11 @@ import NivoChart from './components/nivoChart';
 function App() {
 
     useEffect(() => {
-        var data;
+        /**
+         * 
+         * fetching
+         */
+        var body_data={};
         var hdrs = {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -21,7 +25,7 @@ function App() {
             headers: hdrs,
             redirect: 'follow', // manual, *follow, error
             referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-            body: JSON.stringify(data) // body data type must match "Content-Type" header
+            body: JSON.stringify(body_data) // body data type must match "Content-Type" header
         }
         async function fetch_biobeat_api(url) {
 
@@ -31,9 +35,9 @@ function App() {
                     console.log(Error(`${response.status} ${response.statusText}`));
                 }
                 console.log('response:', response)
-                let data = await response.json();
+                let result = await response.json();
 
-                return data;
+                return result;
 
             } catch (error) {
                 // Errors param
@@ -44,8 +48,8 @@ function App() {
         }
 
         fetch_biobeat_api('get-demo-data')
-            .then(function (data) {
-                console.log(`data:: ${data}`)
+            .then(function (res) {
+                console.log(`Fetch result:: ${res}`)
             }).catch(error => {
                 console.log(`Error fetch_biobeat_api::${error}`)
             })

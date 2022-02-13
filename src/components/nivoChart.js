@@ -26,6 +26,7 @@ function NivoResponsiveLine(props) {
     const [xTickValues, setXTickValues] = useState([]);
 
     useEffect(() => {
+        var body_data={}
         var xTick = []
         var chart_input = [
             {
@@ -51,7 +52,6 @@ function NivoResponsiveLine(props) {
 
         })
 
-
         sbp_sbp.dbp.data.forEach(function (a) {
             var time_parts = a.label.match(/.{2}/g)
             // if (time_parts[4] % 5 == 0) {
@@ -62,38 +62,12 @@ function NivoResponsiveLine(props) {
             // }
         })
 
-
         setNewData(chart_input)
         setXTickValues(xTick)
         console.log(`newData: ${newData}`)
-        async function fetch_biobeat_api(url) {
 
-            try {
-                let response = await fetch(url);
-                if (!response.ok) {
-                    console.log(Error(`${response.status} ${response.statusText}`));
-                }
-                //JSON.parse(userStr);
-                console.log(`response::${JSON.parse(response)}`)
-                let data = await response.json();
-
-                return data;
-
-            } catch (error) {
-                // Errors param
-                console.log(`Fetch error:${error} status:${error.status} error.error:${error.error} headers:${error.headers}`);
-                
-            }
-
-        }
-
-        fetch_biobeat_api('get-demo-data')
-            .then(function (data) {
-                console.log(`fetch_biobeat_api data::${JSON.parse(data)}`)
-            }).catch(error => {
-                console.log(`Error fetch_biobeat_api:${error}`)
-            })
     }, []);
+    
     return (
         <>
             <ResponsiveLine
@@ -222,7 +196,6 @@ function NivoResponsiveLine(props) {
         </>
     );
 }
-
 
 function NivoChart() {
     return (
