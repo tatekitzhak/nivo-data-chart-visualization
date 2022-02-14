@@ -57,7 +57,7 @@ function Chart(props) {
                 sliceTooltip={({ slice }) => {
                     const date = slice.points[0].data.xFormatted;
                     return (
-                        <div>
+                        <div className="border border-primary bg-white">
 
                             <span> {`${date}`}</span>
                             {slice.points.map(point => (
