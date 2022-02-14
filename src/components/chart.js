@@ -4,6 +4,7 @@ import { ResponsiveLine } from "@nivo/line";
 function Chart(props) {
     const newData = props.newData;
     const xTickValues = props.xTickValues;
+    console.log(props.max)
     return (
         <>
             <ResponsiveLine

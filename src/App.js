@@ -12,11 +12,8 @@ function App() {
             }
             console.log('response::', response)
             let result = await response.json();
-
             return result;
-
         } catch (error) {
-            
             // Errors param
             console.log(`Fetch error:${error} status:${error.status} error.error:${error.error} headers:${error.headers}`);
             return sbp_sbp;
@@ -46,7 +43,7 @@ function App() {
             referrerPolicy: 'no-referrer',
             body: JSON.stringify(body_data)
         }
-
+        // https://biobeat-demo-data.eu.bio-beat.cloud/get-demo-data
         fetch_biobeat_api('get-demo-data')
             .then(function (res) {
                 setFetchData(res)
@@ -62,7 +59,7 @@ function App() {
         <>
             <div className="App">
                 <header className="App-header">
-                    <div className="App-header-text">Biobit Nivo data chart visualization</div>
+                    <div className="App-header-text">Biobeat Nivo data chart visualization</div>
                 </header>
                 <h1>Chart</h1>
                 {Object.keys(fetchData).length ? <NivoChart data={fetchData}></NivoChart> : <h1>Chart loading...</h1> }

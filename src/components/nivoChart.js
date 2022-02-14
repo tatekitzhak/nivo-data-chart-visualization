@@ -78,6 +78,7 @@ function NivoResponsiveLine(props) {
 function NivoChart(props) {
     const api_info = props.data;
     const [apiInfo, setApiInfo] = useState(api_info);
+    console.log('NivoChart',NivoChart)
     return (
         <div className="container-fluid" >
             <div className="row border-bottom">
@@ -96,7 +97,7 @@ function NivoChart(props) {
                     <div className="row">
                         <div className="col col-10">
                             <div className="item">
-                                {<NivoResponsiveLine api_info={apiInfo} />}
+                                <NivoResponsiveLine api_info={api_info} />
                             </div>
                         </div>
                     </div>
