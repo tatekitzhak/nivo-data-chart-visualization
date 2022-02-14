@@ -96,7 +96,7 @@ function NivoChart(props) {
                     <div className="row">
                         <div className="col col-10">
                             <div className="item">
-                                <NivoResponsiveLine api_info={apiInfo} />
+                                {<NivoResponsiveLine api_info={apiInfo} />}
                             </div>
                         </div>
                     </div>

@@ -1,9 +1,9 @@
 import React, { useEffect, useState} from 'react';
 import NivoChart from './components/nivoChart';
+import sbp_sbp from './data.json';
 
 function App() {
     const [fetchData, setFetchData] = useState({});
-
     async function fetch_biobeat_api(url) {
         try {
             let response = await fetch(url);
@@ -16,14 +16,15 @@ function App() {
             return result;
 
         } catch (error) {
+            
             // Errors param
             console.log(`Fetch error:${error} status:${error.status} error.error:${error.error} headers:${error.headers}`);
+            return sbp_sbp;
         }
     }
 
     useEffect(() => {
         /**
-         * 
          * fetching
          */
         var body_data={};
@@ -36,22 +37,22 @@ function App() {
         }
 
         var params = {
-            method: 'GET', // *GET, POST, PUT, DELETE, etc.
-            mode: 'no-cors', // no-cors, *cors, same-origin
-            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-            credentials: 'include', // include, *same-origin, omit
+            method: 'GET', 
+            mode: 'no-cors', 
+            cache: 'no-cache', 
+            credentials: 'include', 
             headers: hdrs,
-            redirect: 'follow', // manual, *follow, error
-            referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-            body: JSON.stringify(body_data) // body data type must match "Content-Type" header
+            redirect: 'follow', 
+            referrerPolicy: 'no-referrer',
+            body: JSON.stringify(body_data)
         }
 
         fetch_biobeat_api('get-demo-data')
             .then(function (res) {
                 setFetchData(res)
-                console.log(`Fetch result:: ${res}`)
                 console.log('res:',res)
             }).catch(error => {
+                setFetchData(sbp_sbp)
                 console.log(`Error fetch_biobeat_api::${error}`)
             })
 
