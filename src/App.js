@@ -10,7 +10,6 @@ function App() {
             if (!response.ok) {
                 console.log(Error(`${response.status} ${response.statusText}`));
             }
-            console.log('response::', response)
             let result = await response.json();
             return result;
         } catch (error) {
@@ -47,7 +46,6 @@ function App() {
         fetch_biobeat_api('get-demo-data')
             .then(function (res) {
                 setFetchData(res)
-                console.log('res:',res)
             }).catch(error => {
                 setFetchData(sbp_sbp)
                 console.log(`Error fetch_biobeat_api::${error}`)
