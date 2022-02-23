@@ -10,14 +10,14 @@ function NivoResponsiveLine(props) {
     var defult_input = [
         {
             "id": "sbp",
-            "color": "hsl(18, 70%, 50%)",
+            "color": "red",
             "data": [{
                 "x": "12:05",
                 "y": 185
             }]
         },
         {
-            "id": "dbp", "color": "hsl(79, 70%, 50%)",
+            "id": "dbp", "color": "red",
             "data": [{
                 "x": "12:05",
                 "y": 185
@@ -32,11 +32,11 @@ function NivoResponsiveLine(props) {
         var chart_input = [
             {
                 "id": "sbp",
-                "color": "hsl(18, 70%, 50%)",
+                "color":"#1E90FF",
                 "data": []
             },
             {
-                "id": "dbp", "color": "hsl(79, 70%, 50%)",
+                "id": "dbp", "color": "green",
                 "data": []
             }];
 

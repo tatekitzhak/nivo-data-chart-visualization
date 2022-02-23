@@ -1,10 +1,32 @@
 import React, { useEffect, useState } from "react";
 import { ResponsiveLine } from "@nivo/line";
 
+function SliceTooltip(props) {
+    const slice = props.slice;
+    const date = props.date;
+    return (
+        <>
+            <div className="border border-primary bg-white rounded">
+
+                <span> {`${date}`}</span>
+                {slice.points.map(point => (
+                    <div key={point.id}>
+
+                        <span style={{ color: point.serieColor }}>
+                            {`${point.serieId} ${point.data.yFormatted}`}
+                        </span>
+                    </div>
+                ))}
+            </div>
+        </>
+    )
+
+}
 function Chart(props) {
     const newData = props.newData;
     const xTickValues = props.xTickValues;
-    console.log(props.max)
+    const sbpColor = newData[0].color;
+    const dbpColor = newData[1].color;
     return (
         <>
             <ResponsiveLine
@@ -47,7 +69,7 @@ function Chart(props) {
                     legend: "",
                     legendOffset: -40
                 }}
-                colors={["#1E90FF"]}
+                colors={[sbpColor, dbpColor]}
                 useMesh={true}
                 pointSize={0}
                 pointColor={{ theme: "background" }}
@@ -58,35 +80,18 @@ function Chart(props) {
                 sliceTooltip={({ slice }) => {
                     const date = slice.points[0].data.xFormatted;
                     return (
-                        <div className="border border-primary bg-white rounded">
+                        <>
+                            <SliceTooltip slice={slice} date={date}>
 
-                            <span> {`${date}`}</span>
-                            {slice.points.map(point => (
-                                <div key={point.id}>
-
-                                    <span style={{ color: point.serieColor }}>
-                                        {`${point.serieId} ${point.data.yFormatted}`}
-                                    </span>
-                                </div>
-                            ))}
-                        </div>
+                            </SliceTooltip>
+                        </>
                     );
                 }}
                 tooltipFormat={value => {
                     return value;
                 }}
                 useMesh={true}
-                layers={
-                    true
-                        ? [
-                            "grid",
-                            "lines",
-                            "slices",
-                            "axes",
-
-                        ]
-                        : undefined
-                }
+                layers={ true ? ["grid","lines","slices","axes"]: undefined }
                 legends={[
                     {
                         anchor: 'bottom-right',
@@ -115,7 +120,7 @@ function Chart(props) {
                 ]}
             />
         </>
-    );  
+    );
 }
 
 export default Chart;
