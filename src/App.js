@@ -30,7 +30,10 @@ function App() {
             referrerPolicy: 'no-referrer',
             body: JSON.stringify(body_data)
         }
-        // https://biobeat-demo-data.eu.bio-beat.cloud/get-demo-data
+        /** Origin API:
+         * https://biobeat-demo-data.eu.bio-beat.cloud/get-demo-data
+         */
+        
         fetch_biobeat_api('get-demo-data')
             .then(function (res) {
                 setFetchData(res)
